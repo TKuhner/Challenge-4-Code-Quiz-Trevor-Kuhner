@@ -1,31 +1,31 @@
 
     question: "Which data structure uses LIFO?",
-    a. "Array",
-    b. "Int",
-    c. "Stacks",
-    d. "Queues",
+    a: "Array",
+    b: "Int",
+    c: "Stacks",
+    d: "Queues",
     correct: "c",
 
     question: "What is FIFO?",
 
-    a.     "First in Few Out",
-    b.     "Few In Few Out",
-    c.     "First In First Out",
-    d.     "Few In First Out",
+    a:     "First in Few Out",
+    b:     "Few In Few Out",
+    c:     "First In First Out",
+    d:     "Few In First Out",
     correct: "c", 
 
     question: "Which is NOT a datatype?"
-    a. "boolean",
-    b. "string",
-    c. "double",
-    d. "letter",
+    a: "boolean",
+    b: "string",
+    c: "double",
+    d: "letter",
     correct: "d", 
 
     question: "What year did JavaScript Launch?"
-    a. "1995",
-    b. "2000",
-    c. "1999",
-    d. "2005",
+    a: "1995",
+    b: "2000",
+    c: "1999",
+    d: "2005",
     correct: "a",
 
     

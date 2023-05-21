@@ -1,0 +1,59 @@
+*{
+    font-family: sans-serif;
+}
+button{
+    border-radius: 3px;
+}
+
+body{
+    background-color:rgb(37, 37, 89);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+}
+#header{
+    background-color: #FFCC98;
+    padding: 5px;
+    margin: auto;
+    border-radius: 3px;
+}
+
+.container{
+    background-color:#FFF7D9 ;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    border: solid 2px #53CCEC;
+    
+    padding:10px;
+    margin: auto;
+    width: 75%;
+}
+
+#quizBox{
+    margin:auto
+}
+
+#time-div{
+    align-items: flex-end;
+    
+}
+
+#timer{
+    text-align: end;
+}
+
+ul{
+   list-style-type: none;
+}
+li{
+    padding: 5px;
+    
+}
+
+.answer{
+    background-color:#53CCEC;
+}
