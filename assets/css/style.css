@@ -2,10 +2,12 @@
     font-family: sans-serif;
 }
 button{
-    border-radius: 3px;
+    border-radius: 15px;
     background-color: #53CCEC;
     size: 20px;
     line-height: 30px;
+    font-size: 20px;
+    padding: 10px 15px;
 }
 
 body{
@@ -18,9 +20,9 @@ body{
 }
 #header{
     background-color: #FFCC98;
-    padding: 5px;
-    margin: auto;
-    border-radius: 3px;
+    padding: 5px 15px;
+    margin: 5px auto;
+    border-radius: 25px;
 }
 
 .container{
@@ -30,14 +32,28 @@ body{
     flex-direction: column;
     border-radius: 3px;
     border: solid 2px #53CCEC;
+
     
     padding:10px;
-    margin: auto;
+    margin: 10px auto;
     width: 75%;
+}
+#introScoresButton{
+    padding: 1px 6px;
+    font-size: 14px;
+}
+
+#startButton{
+    display: flex;
+    justify-content: center;
+    
 }
 
 #quizBox{
     margin:auto
+}
+#question{
+    margin-top: 0px;
 }
 
 #time-div{
@@ -47,13 +63,34 @@ body{
 
 #timer{
     text-align: end;
+    margin-top: 5px;
+    margin-bottom: 0px;
 }
 
 ul{
    list-style-type: none;
+   padding-left: 20px;
 }
 li{
-    padding: 5px;
+    padding:5px 0px;
+}
+
+#intro{
     
+}
+#quiz{
+    /* display: none; */
+}
+
+#results{
+    /* display:none; */
+}
+#resultsButtons{
+    display:flex;
+    justify-content: space-evenly;
+
+}
+#scores{
+    /* display: none; */
 }
 
