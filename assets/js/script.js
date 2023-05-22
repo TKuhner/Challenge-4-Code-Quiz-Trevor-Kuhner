@@ -1,3 +1,4 @@
+// QUIZ QUESTIONS, ANSWERS, AND CORRECT ANSWERS
 const quizData = [
     {
         question: "Which data structure uses LIFO?",
@@ -36,9 +37,9 @@ const quizData = [
 
 
 var timerEl = document.querySelector("#timer")
-var startButton = document.querySelector()
+var startButton = document.querySelector("#start")
 
-var seconds = 100;
+var secondsCount = 100;
 var currentQuest = 0
 
 const questionEl = document.querySelector("#question")
@@ -47,27 +48,53 @@ const ans1 = document.querySelector("#answer1");
 const ans2 = document.querySelector("#answer2");
 const ans3 = document.querySelector("#answer3");
 const ans4 = document.querySelector("#answer4");
+const answerButton = document.querySelector("button.answers")
 
-function startTimer(){
-    var timeInt = setInterval(function() {
-        seconds--;
-        timerEl.textContent = 'Time:${seconds}';
 
-        if (seconds === 0){
-            clearInterval(timeInt);
+// EVENT LISTENERS
+startButton.addEventListener("click", startQuiz);
 
-        }
-    }, 1000);
+answerButton.addEventListener('click', checkAnswer);
+
+
+function startQuiz(){
+    // display intro off
+    //display quiz on
+    startTimer()
+    setQuiz(currentQuest);
 }
 
-function makeQuiz() {
+function setQuiz() {
 
-    const currentQuestion = quizData[currentQuest]
+    var currentQuestion = quizData[currentQuest]
 
     questionEl.textContent = currentQuestion.question
     ans1.textContent = currentQuestion.a
     ans2.textContent = currentQuestion.b
     ans3.textContent = currentQuestion.c
     ans4.textContent = currentQuestion.d
+}
 
+function checkAnswer(event){
+    event.preventDefault();
+
+    if (quizData[currentQuest].correct !== event.target.value){
+        secondsCount -= 10;
+    } else if (currentQuest < quizData.length){
+        currentQuest++;
+    }
+    setQuiz(currentQuest);
+}
+
+// Timer function
+function startTimer(){
+    var timeInt = setInterval(function() {
+        secondsCount--;
+        timerEl.textContent = 'Time: ' + secondsCount + 's';
+
+        if (seconds === 0){
+            clearInterval(timeInt);
+
+        }
+    }, 1000);
 }

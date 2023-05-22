@@ -3,6 +3,7 @@
 }
 button{
     border-radius: 3px;
+    background-color: #53CCEC;
 }
 
 body{
@@ -54,6 +55,3 @@ li{
     
 }
 
-.answer{
-    background-color:#53CCEC;
-}
