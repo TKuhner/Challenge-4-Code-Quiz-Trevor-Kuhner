@@ -4,6 +4,8 @@
 button{
     border-radius: 3px;
     background-color: #53CCEC;
+    size: 20px;
+    line-height: 30px;
 }
 
 body{

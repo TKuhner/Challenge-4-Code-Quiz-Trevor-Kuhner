@@ -6,7 +6,7 @@ const quizData = [
         b: "Int",
         c: "Stacks",
         d: "Queues",
-        correct: "c",
+        correct: "Stacks",
     },
     {
         question: "What is FIFO?",
@@ -15,7 +15,7 @@ const quizData = [
         b:     "Few In Few Out",
         c:     "First In First Out",
         d:     "Few In First Out",
-        correct: "c", 
+        correct: "First In First Out", 
     },
     {
         question: "Which is NOT a datatype?",
@@ -23,7 +23,7 @@ const quizData = [
         b: "string",
         c: "double",
         d: "letter",
-        correct: "d", 
+        correct: "letter", 
     }, 
     {
         question: "What year did JavaScript Launch?",
@@ -31,7 +31,7 @@ const quizData = [
         b: "2000",
         c: "1999",
         d: "2005",
-        correct: "a",
+        correct: "1995",
     }
 ]
 
@@ -48,18 +48,18 @@ const ans1 = document.querySelector("#answer1");
 const ans2 = document.querySelector("#answer2");
 const ans3 = document.querySelector("#answer3");
 const ans4 = document.querySelector("#answer4");
-const answerButton = document.querySelector("button.answers")
+const answerButton = document.querySelector("#answers")
 
 
 // EVENT LISTENERS
 startButton.addEventListener("click", startQuiz);
 
-answerButton.addEventListener('click', checkAnswer);
+answerButton.addEventListener("click", checkAnswer);
 
 
 function startQuiz(){
     // display intro off
-    //display quiz on
+    // display quiz on
     startTimer()
     setQuiz(currentQuest);
 }
@@ -76,15 +76,26 @@ function setQuiz() {
 }
 
 function checkAnswer(event){
+    // alert("made it to checkAnswer")
     event.preventDefault();
 
-    if (quizData[currentQuest].correct !== event.target.value){
-        secondsCount -= 10;
-    } else if (currentQuest < quizData.length){
-        currentQuest++;
+    if(event.target.matches(".answer")){
+        console.log(event.target.textContent)
+        if (quizData[currentQuest].correct !== event.target.textContent){
+            secondsCount -= 10;
+            if (currentQuest < quizData.length){
+                currentQuest++;
+                console.log(currentQuest)
+            }
+        } else if (currentQuest < quizData.length){
+            currentQuest++;
+            console.log(currentQuest)
+        }
+        setQuiz(currentQuest);
     }
-    setQuiz(currentQuest);
-}
+    }
+
+    
 
 // Timer function
 function startTimer(){
@@ -92,7 +103,7 @@ function startTimer(){
         secondsCount--;
         timerEl.textContent = 'Time: ' + secondsCount + 's';
 
-        if (seconds === 0){
+        if (secondsCount === 0){
             clearInterval(timeInt);
 
         }
