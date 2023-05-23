@@ -42,6 +42,9 @@ body{
     padding: 1px 6px;
     font-size: 14px;
 }
+#introText{
+    margin: 20px 10px;
+}
 
 #startButton{
     display: flex;
@@ -73,13 +76,21 @@ ul{
 }
 li{
     padding:5px 0px;
+    
 }
 
 #intro{
-    
+    display: block;
 }
 #quiz{
     /* display: none; */
+}
+#answers{
+    
+}
+.answer{
+  
+    min-width: 20%;
 }
 
 #results{

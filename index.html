@@ -22,8 +22,9 @@
                 <button id="introScoresButton">High Scores</button>
                 
             </div>
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem similique esse doloremque iusto adipisci, tempore laborum eos ipsum, sint veniam veritatis, officia omnis cupiditate animi obcaecati! Quisquam error explicabo cumque!
+            <h2></h2>
+            <p id="introText">
+                Welcome to the JavaScript Coding Quiz. This quiz will ask a series of questions as a timer counts down. If you answer a question incorrectly, 10 seconds will be subtracted from your remaining time. If you answer all of the questions in the time allotted, or the timer reaches 0, then the quiz is over. When the quiz ends, you can enter in your initials to save your score. 
             </p>
 
             <div id="startButton">
@@ -53,8 +54,11 @@
         </section>
         <!-- Results -->
         <section id="results">
+            <h2>Finished!</h2>
+            <p id="scoreReveal">Your final score is:</p>
             <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus reiciendis cupiditate, ipsam expedita ab id numquam iure pariatur adipisci? Sed ab quod ut vitae doloribus fuga et fugiat incidunt sit.
+                Enter Initials:
+                <input type="text" id="initialsInput">
             </p>
             <div id="resultsButtons">
                 <button class="scoresButton">High Scores</button>
@@ -64,7 +68,17 @@
         </section>     
         <!-- High Scores -->
         <section id="scores">
-
+            <h2>High Scores</h2>
+            <ol>
+                <li>
+                    Some Name
+                </li>
+            </ol>
+            <div id="resultsButtons">
+                <button class="returnIntroButton">Return to Intro</button>
+            
+                <button class="clearScoresButton">Clear Scores</button>
+            </div>
         </section>
     </div>
 
