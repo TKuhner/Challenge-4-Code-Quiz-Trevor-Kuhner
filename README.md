@@ -24,11 +24,11 @@ Usage
 
 To use the quiz program, follow these steps:
 
-    Clone the repository or download the source code files.
+    Load deployed web page, clone the repository, or download the source code files.
 
     Open the index.html file in a web browser.
 
-    The quiz will start immediately after the page loads.
+    The quiz will start after clicking the start button.
 
     Read each question and select the correct answer by clicking on the corresponding option.
 
