@@ -10,7 +10,6 @@ const quizData = [
     },
     {
         question: "What is FIFO?",
-
         a: "First in Few Out",
         b: "Few In Few Out",
         c: "First In First Out",
@@ -35,9 +34,7 @@ const quizData = [
     }
 ]
 
-var timeInt
-
-// sections
+// DOM elements
 var introEl = document.querySelector('#intro');
 var quizEl = document.querySelector('#quiz');
 var resultsEl = document.querySelector('#results');
@@ -45,15 +42,16 @@ var scoresEl = document.querySelector('#scores');
 var scoresListEl = document.querySelector('#scoresList');
 var initialsInputEl = document.querySelector('#initialsInput')
 
-// buttons + timer
+// Buttons and timer
 var timerEl = document.querySelector("#timer");
 var startButton = document.querySelector("#start");
 var submitButton = document.querySelector(".submitButton");
 var scoresButtons = document.querySelectorAll(".scoresButton");
 var clearScoresButton = document.querySelector("#clearScoresButton");
 var returnIntroButton = document.querySelector(".returnIntroButton");
+var returnIntroScoresButton = document.querySelector("#returnIntro");
 
-// counters
+// Counters and variables
 var answersCorrect = 0;
 var secondsCount = 100;
 var currentQuest = 0;
@@ -61,9 +59,8 @@ var scoreList = [];
 var userInitials = "";
 var userScore = 0;
 
-
+// Question and answer elements
 const questionEl = document.querySelector("#question");
-// Answer buttons
 const ans1 = document.querySelector("#answer1");
 const ans2 = document.querySelector("#answer2");
 const ans3 = document.querySelector("#answer3");
@@ -74,17 +71,16 @@ const answerButton = document.querySelector("#answers");
 startButton.addEventListener("click", startQuiz);
 answerButton.addEventListener("click", checkAnswer);
 submitButton.addEventListener("click", submitData);
-scoresEl.addEventListener("click", displayScores)
+scoresEl.addEventListener("click", displayScores);
 scoresButtons.forEach(function (button) {
     button.addEventListener("click", function (event) {
         displayScores(event.target);
     });
 });
 clearScoresButton.addEventListener("click", clearScores);
+returnIntroScoresButton.addEventListener("click", returnIntro);
 returnIntroButton.addEventListener("click", returnIntro);
-document.querySelectorAll(".returnIntroButton").forEach(function (button) {
-    button.addEventListener("click", returnIntro);
-  });
+
 
 function returnIntro() {
     // Hide other sections
@@ -100,18 +96,19 @@ function returnIntro() {
 function startQuiz() {
     // Reset variables
     answersCorrect = 0;
-    secondsCount = 100;
+    secondsCount = 60;
     currentQuest = 0;
 
-    // Display intro off
-    // Display intro section
+    // Hide intro section
     introEl.style.display = "none";
 
     // Display quiz section
     quizEl.style.display = "block";
 
-    // Display quiz on
+    // Start the timer
     startTimer();
+
+    // Set the quiz
     setQuiz();
 }
 
@@ -127,41 +124,38 @@ function setQuiz() {
 }
 
 function checkAnswer(event) {
-    // alert("made it to checkAnswer")
     event.preventDefault();
 
-
-    console.log(event.target.textContent)
+    // Check if the selected answer is correct
     if (quizData[currentQuest].correct !== event.target.textContent) {
         secondsCount -= 10;
+
+        // Move to the next question or show scores
         if (currentQuest < quizData.length) {
             currentQuest++;
             if (currentQuest < quizData.length) {
-                setQuiz(currentQuest)
-            }
-            else {
+                setQuiz(currentQuest);
+            } else {
                 getScores();
             }
         } else {
             getScores();
         }
-
     } else if (currentQuest < quizData.length) {
         currentQuest++;
         answersCorrect++;
+
+        // Move to the next question or show scores
         if (currentQuest < quizData.length) {
             setQuiz(currentQuest);
-        }
-        else {
+        } else {
             getScores();
         }
     }
-
-
 }
 
 function getScores() {
-    clearInterval(timeInt)
+    clearInterval(timeInt);
 
     // Hide quiz section
     quizEl.style.display = "none";
@@ -170,34 +164,39 @@ function getScores() {
     resultsEl.style.display = "block";
 
     document.getElementById("scoreReveal").innerText = "Your final score is " + answersCorrect + "/" + currentQuest + " with a remaining time of " + secondsCount + "s";
-
 }
 
 function submitData() {
     userInitials = initialsInputEl.value;
     userScore = currentQuest !== 0 ? ((answersCorrect / currentQuest) * 100).toFixed(2) : 0;
-    scoreList.push({ initials: userInitials, score: userScore, time: secondsCount });
 
-    scoreList.sort(function (a, b) {
+    // Load existing scores from localStorage
+    var storedScores = JSON.parse(localStorage.getItem("scoreList")) || [];
+
+    // Append the new score to the existing list
+    storedScores.push({ initials: userInitials, score: userScore, time: secondsCount });
+
+    // Sort the scores in descending order
+    storedScores.sort(function (a, b) {
         return b.score - a.score;
     });
 
-    scoresListEl.innerHTML = ""; // Clear existing list items before adding new ones
-
-    scoreList.forEach(function (item) {
+    // Update the score list in the UI
+    scoresListEl.innerHTML = "";
+    storedScores.forEach(function (item) {
         var listItem = document.createElement("li");
         listItem.textContent = item.initials + " - Score: " + item.score + " - Time: " + item.time + "s";
         scoresListEl.appendChild(listItem);
     });
 
-    var scoresSection = document.getElementById("scores");
-    scoresSection.insertBefore(scoresListEl, scoresSection.getElementsByTagName("h2")[0].nextSibling);
+    // Store the updated scores in localStorage
+    localStorage.setItem("scoreList", JSON.stringify(storedScores));
 
-    storeScores(); // Call the storeScores function to save the scores to local storage
-    displayScores();
+    displayScores(); // Call the displayScores function to show the updated scores
 }
 
 function displayScores() {
+    // Hide other sections
     introEl.style.display = "none";
     quizEl.style.display = "none";
     resultsEl.style.display = "none";
@@ -205,6 +204,7 @@ function displayScores() {
     // Display scores section
     scoresEl.style.display = "block";
 
+    // Retrieve stored scores from localStorage
     var storedScores = JSON.parse(localStorage.getItem("scoreList"));
 
     // Clear existing list items
@@ -237,6 +237,7 @@ function storeScores() {
 function clearScores() {
     localStorage.clear();
     scoresListEl.innerHTML = "";
+    storeScores();
 }
 
 // Timer function
@@ -247,9 +248,7 @@ function startTimer() {
 
         if (secondsCount === 0) {
             clearInterval(timeInt);
-
+            displayScores();
         }
     }, 1000);
 }
-
-
