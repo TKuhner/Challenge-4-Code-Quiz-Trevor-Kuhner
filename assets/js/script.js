@@ -53,7 +53,7 @@ var returnIntroScoresButton = document.querySelector("#returnIntro");
 
 // Counters and variables
 var answersCorrect = 0;
-var secondsCount = 100;
+var secondsCount = 60;
 var currentQuest = 0;
 var scoreList = [];
 var userInitials = "";
