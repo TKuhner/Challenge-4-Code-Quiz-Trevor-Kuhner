@@ -19,7 +19,7 @@
 
         <section id="intro">
             <div class="scoresButton">
-                <button id="introScoresButton">High Scores</button>
+                <button id="introScoresButton" class="scoresButton">High Scores</button>
                 
             </div>
             <h2></h2>
@@ -55,31 +55,37 @@
         <!-- Results -->
         <section id="results">
             <h2>Finished!</h2>
-            <p id="scoreReveal">Your final score is:</p>
+            <p id="scoreReveal">
+                Your final score is:
+            </p>
+            <p>
+                Please enter your initials to log your score.
+            </p>
             <p>
                 Enter Initials:
                 <input type="text" id="initialsInput">
             </p>
             <div id="resultsButtons">
-                <button class="scoresButton">High Scores</button>
+                <button class="submitButton">Submit</button>
+                <button class="returnIntroButton">
+                    Intro
+                </button>
             
-                <button class="againButton">Play Again</button>
+                <button class="scoresButton">High Scores</button>
             </div>
         </section>     
         <!-- High Scores -->
         <section id="scores">
             <h2>High Scores</h2>
-            <ol>
-                <li>
-                    Some Name
-                </li>
-            </ol>
+            <ol id="scoresList"></ol>
             <div id="resultsButtons">
-                <button class="returnIntroButton">Return to Intro</button>
-            
-                <button class="clearScoresButton">Clear Scores</button>
+              <button class="returnIntroButton">Return to Intro</button>
+              <button id="clearScoresButton">Clear Scores</button>
+
             </div>
-        </section>
+          </section>
+          
+          
     </div>
 
     <script src="./assets/js/script.js"></script>

@@ -83,7 +83,7 @@ li{
     display: block;
 }
 #quiz{
-    /* display: none; */
+    display: none;
 }
 #answers{
     
@@ -94,7 +94,7 @@ li{
 }
 
 #results{
-    /* display:none; */
+    display:none;
 }
 #resultsButtons{
     display:flex;
@@ -102,6 +102,6 @@ li{
 
 }
 #scores{
-    /* display: none; */
+    display: none;
 }
 
