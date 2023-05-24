@@ -2,7 +2,45 @@
 This repository is for the completion of the challenge 4 - code quiz for the Northwestern University Coding Bootcamp.
 
 
-The challenge is to create a code quiz that initially prompts the user with a starting page. Once the start button on the page has been clicked, the first page of question and answers will appear and begin a count down timer. Based on the given information below the timer is continuous across all questions but has a subtraction of time when an incorrect answer is submitted. The quiz is over when the timer reaches 0 and the quiz needs to be able to save initials and scores.
+Quiz Program
+
+This is a simple quiz program implemented in JavaScript. It presents a series of multiple-choice questions to the user, calculates their score based on the number of correct answers, and allows them to store and view high scores.
+Features
+
+    Multiple-choice quiz with a set of predefined questions and answers.
+    Timer to track the time taken to complete the quiz.
+    Scoring system to calculate the number of correct answers.
+    Storage of high scores in the browser's local storage.
+    Display of high scores in descending order.
+    Ability to clear stored high scores.
+
+Usage
+
+To use the quiz program, follow these steps:
+
+    Clone the repository or download the source code files.
+
+    Open the index.html file in a web browser.
+
+    The quiz will start immediately after the page loads.
+
+    Read each question and select the correct answer by clicking on the corresponding option.
+
+    If the selected answer is incorrect, 10 seconds will be deducted from the timer.
+
+    After answering all the questions or when the timer reaches 0, the program will display the user's final score.
+
+    The user will be prompted to enter their initials to save their score.
+
+    The program will store the user's score, initials, and remaining time in the browser's local storage.
+
+    To view the high scores, click on the "View High Scores" button.
+
+    The high scores will be displayed in descending order, showing the initials, score, and time for each entry.
+
+    To clear the high scores, click on the "Clear High Scores" button.
+
+    To restart the quiz or go back to the introduction, click on the corresponding buttons.
 
 
 GIVEN I am taking a code quiz
